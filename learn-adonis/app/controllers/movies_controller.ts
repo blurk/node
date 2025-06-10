@@ -10,7 +10,8 @@ export default class MoviesController {
 
   async show({ view, params }: HttpContext) {
     const movie = await Movie.find(params.slug)
+    const movies: Movie[] = await Movie.all()
 
-    return view.render('pages/movies/show', { movie })
+    return view.render('pages/movies/show', { movie, movies })
   }
 }

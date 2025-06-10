@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      AdonisJS - A fully featured web framework for Node.js
-    </title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('dumper')
-  </head>
-  <body>
-    <main class="max-w-3xl mx-auto">
-      <nav class="flex gap-2">
-      </nav>
+@common.layout({title: "Movies App"})
+  @slot('meta')
+    <meta name="description" content="This is a dumb movie app" />
+  @end
 
-      <h1>
-        Hello
-      </h1>
+  <h1>
+    Movies App
+  </h1>
 
-      <ul>
-        @each(movie in movies)
-          <li>
-            <a
-              class="underline text-indigo-700 font-500 hover:text-indigo-400"
-              href="{{ route('movies.show', { slug: movie.slug }) }}"
-            >{{ movie.title }}</a>
-          </li>
-        @end
-      </ul>
-    </main>
-  </body>
-</html>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+    @each((movie) in movies)
+      @!movie.card({movie})
+    @end
+  </div>
+@end

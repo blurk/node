@@ -19,5 +19,5 @@ router
   .where('slug', router.matchers.slug())
 
 // Use /flush as default and :slug later
-router.get('/redis/flush', [RedisController, 'flush']).as('redis.flush')
-router.get('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
+router.delete('/redis/flush', [RedisController, 'flush']).as('redis.flush')
+router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')

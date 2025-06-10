@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {{ title }}
+    </title>
+
+    @if($slots.meta)
+      {{{ await $slots.meta() }}}
+    @end
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <main>
+        @include('partials/nav')
+
+        {{{ await $slots.main() }}}
+      </main>
+
+      <footer class="flex justify-end py-4">
+        <strong>{{ currentYear }}</strong>
+      </footer>
+
+      <div class="fixed bottom-3 right-3 flex gap-3">
+        <!-- allowMethodSpoofing -->
+        <form action="{{ route('redis.flush', {}, {qs: {_method: 'DELETE' }}) }}" method="POST">
+          {{ csrfField() }}
+          @button({type: 'submit', class: 'cursor-pointer'})
+            @svg('ph:trash-fill', {class: 'mr-2'})
+            Flush Redis DB
+          @end
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
