@@ -4,11 +4,23 @@
   @end
 
   <h1>
-    Movies App
+    Movies
   </h1>
 
+  <h2>
+    Coming Soon
+  </h2>
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
-    @each((movie) in movies)
+    @each((movie) in comingSoon)
+      @!movie.card({movie})
+    @end
+  </div>
+
+  <h2>
+    Recently Released
+  </h2>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+    @each((movie) in recentlyReleased)
       @!movie.card({movie})
     @end
   </div>
