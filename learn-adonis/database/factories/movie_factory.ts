@@ -10,7 +10,6 @@ export const MovieFactory = factory
       writerId: 1,
       directorId: 2,
       title: faker.book.title(),
-      slug: faker.string.uuid(),
       summary: faker.lorem.sentence(),
       abstract: faker.lorem.paragraphs(),
       posterUrl: faker.image.urlPicsumPhotos({ width: 800 }),
